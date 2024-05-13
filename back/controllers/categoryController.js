@@ -5,6 +5,7 @@ const path = require('path');
 
 
 class CategoryController {
+
   async create(req, res, next) {
     try {
       const {category} = req.body
