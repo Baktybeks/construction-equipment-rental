@@ -30,10 +30,10 @@ const TheHeader = () => {
 				{
 					session?.data ?
 						<Link className={styles.textLink} href='#'
-							  onClick={() => signOut({ callbackUrl: '/' })}>Выйти </Link>
+							  onClick={() => signOut({ callbackUrl: '/' })}>Logout</Link>
 						:
 						<>
-							<Link className={styles.textLink} href='/signin'>Войти </Link>
+							<Link className={styles.textLink} href='/signin'>Login</Link>
 						</>
 				}
 			</div>

@@ -48,6 +48,7 @@
   white-space: nowrap;
   border-radius: 15px;
   padding: 15px 30px;
+  margin-left: 16px;
   background: #AE1919;
   color: #fff;
 
@@ -66,4 +67,18 @@
   font-size: 24px;
   line-height: 36px;
   font-weight: 500;
+}
+
+.textLink {
+  color: #ffffff;
+
+  &:hover {
+    color: #AE1919;
+    border-bottom: 2px solid red;
+  }
+}
+
+.active {
+  color: #AE1919;
+  border-bottom: 2px solid red;
 }
