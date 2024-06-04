@@ -18,7 +18,7 @@ const SighInForm = () => {
 			redirect: false
 		})
 
-		console.log(session.data?.user)
+		console.log(session)
 
 		if (res) {
 			session.data && (

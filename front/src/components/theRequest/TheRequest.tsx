@@ -1,11 +1,68 @@
 'use client'
 
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './TheRequest.module.scss'
 import {useSession} from "next-auth/react";
 
+interface Direction {
+	name: string;
+	email: string;
+	phone: string;
+	description: string;
+	EquipmentId: string;
+	processed: boolean;
+}
+
 const TheRequest = () => {
-	const session = useSession()
+	const [newAplication, setNewAplication] = useState<Direction>({
+		name: '',
+		email: '',
+		phone: '',
+		description: '',
+		EquipmentId: '',
+		processed: false,
+	});
+
+
+	const session = useSession();
+
+	const handleChange = (e: any) => {
+		const {name, value} = e.target;
+		setNewAplication(prevState => ({
+			...prevState,
+			[name]: value
+		}));
+	};
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		try {
+			const formData = new FormData();
+			formData.append('name', newAplication.name);
+			formData.append('email', newAplication.email);
+			formData.append('phone', newAplication.phone);
+			formData.append('description', newAplication.description);
+			formData.append('EquipmentId', newAplication.EquipmentId);
+			formData.append('processed', newAplication.processed.toString());
+
+			const response = await fetch('http://localhost:5000/api/application/', {
+				method: 'POST',
+				body: formData,
+			});
+
+			if (response.ok) {
+				if (!res.ok) {
+					throw new Error('Unable to fetch directions!');
+				}
+
+				console.log('добавлен объект');
+			} else {
+				console.error('Ошибка при добавлении нового направления:', response.statusText);
+			}
+		} catch (error) {
+			console.error('Ошибка при выполнении запроса:', error);
+		}
+	};
 
 	return (
 		<>
@@ -18,16 +75,16 @@ const TheRequest = () => {
 						prices and services. We take great pride in everything that we do in Jhontraktor
 					</p>
 					<form className={styles.form}>
-						<input className={styles.inputForm} type='text' placeholder='Name' />
-						<input className={styles.inputForm} type='email' placeholder='Email' />
-						<input className={styles.inputForm} type='number' placeholder='Phone' />
-						{/*<select className={styles.inputForm} id='service' name='service'>*/}
-						{/*	<option className={styles.valueService} value='#'>Select Your Service</option>*/}
-						{/*	<option className={styles.valueService} value='service1'>Service1</option>*/}
-						{/*	<option className={styles.valueService} value='service2'>Service2</option>*/}
-						{/*	<option className={styles.valueService} value='service3'>Service3</option>*/}
-						{/*</select>*/}
-						<textarea className={styles.textareaForm} placeholder='Additional Details!' />
+						<input className={styles.inputForm} value={newAplication.name} onChange={handleChange} name='name' type='text' placeholder='Name' />
+						<input className={styles.inputForm} value={newAplication.email} onChange={handleChange} name='email' type='email' placeholder='Email' />
+						<input className={styles.inputForm} value={newAplication.phone} onChange={handleChange} name='phone' type='number' placeholder='Phone' />
+						<select className={styles.inputForm} id='service' onChange={handleChange}  value={newAplication.description} name='description'>
+							<option className={styles.valueService} value="Банки"></option>
+							<option className={styles.valueService} value="Мбанк">Мбанк</option>
+							<option className={styles.valueService} value="Элкарт">Элкарт</option>
+							<option className={styles.valueService} value="Viza">Viza</option>
+						</select>
+						<textarea className={styles.textareaForm} onChange={handleChange} placeholder='Additional Details!' />
 
 						{session.data ? <button className={styles.submit} type='button'>Submit Request</button> :
 						<div className={styles.textForm}>You must register to submit an application.</div>}

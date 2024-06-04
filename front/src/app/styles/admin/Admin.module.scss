@@ -12,6 +12,7 @@
   line-height: 38px;
   letter-spacing: 0.5px;
   margin-bottom: 24px;
+  color: #fff;
 }
 
 .formAdmin {
@@ -33,7 +34,7 @@
     font-weight: 500;
     line-height: 38px;
     letter-spacing: 0.5px;
-    color: #36384E;
+    color: #fff;
   }
 }
 
@@ -101,7 +102,8 @@
   height: 42px;
   display: grid;
   place-items: center;
-  background: #F1592B;
+  background: #AE1919;
+  border-radius: 8px;
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
@@ -149,7 +151,7 @@
   font-weight: 400;
   line-height: 38px;
   letter-spacing: 0.5px;
-  color: #36384E;
+  color: #fff;
 }
 
 .blockList {
@@ -178,10 +180,11 @@
   text-align: left;
 }
 
-.nameBooksList {
+.nameList {
   font-size: 28px;
   font-weight: 600;
   line-height: 30px;
+  color: #fff;
 }
 
 .prise {
@@ -208,7 +211,7 @@
   column-gap: 16px;
 }
 
-.addBooks {
+.addProduct {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

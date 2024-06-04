@@ -6,43 +6,33 @@ import styles from '../styles/admin/Admin.module.scss'
 interface Direction {
     id: string;
     title: string;
-    author: string;
-    publication_year: string;
-    bestseller: boolean;
-    isNew: boolean;
     price: string;
-    GenreId: string;
-    discount: boolean;
-    cover_image: string;
+    CategoryId: string;
+    image: string;
     description: string;
 }
 
 
 const PageAdmin = () => {
-    const [books, setBooks] = useState<Direction[]>([]);
+    const [product, setProduct] = useState<Direction[]>([]);
     const [gender, setGender] = useState<any>([]);
-    const [newBooks, setNewBooks] = useState<Direction>({
+    const [newProduct, setNewProduct] = useState<Direction>({
         id: '',
         title: '',
-        author: '',
-        publication_year: '',
-        bestseller: false,
-        isNew: false,
         price: '',
-        GenreId: '',
-        discount: false,
-        cover_image: '',
+        CategoryId: '0',
+        image: '',
         description: '',
     });
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:5000/api/book/');
+            const response = await fetch('http://localhost:5000/api/equipment/');
             if (!response.ok) {
                 throw new Error('Unable to fetch posts!');
             }
             const jsonData = await response.json();
-            setBooks(jsonData.rows);
+            setProduct(jsonData.rows);
         };
 
         fetchData();
@@ -50,7 +40,7 @@ const PageAdmin = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:5000/api/genre/');
+            const response = await fetch('http://localhost:5000/api/category/');
             if (!response.ok) {
                 throw new Error('Unable to fetch posts!');
             }
@@ -64,12 +54,12 @@ const PageAdmin = () => {
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         if (name === 'cover_image') {
-            setNewBooks(prevState => ({
+            setNewProduct(prevState => ({
                 ...prevState,
                 [name]: e.target.files[0]
             }));
         } else {
-            setNewBooks(prevState => ({
+            setNewProduct(prevState => ({
                 ...prevState,
                 [name]: value
             }));
@@ -78,11 +68,11 @@ const PageAdmin = () => {
 
     const handleDelete = async (index: string) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/book/${index}`, {
+            const response = await fetch(`http://localhost:5000/api/equipment/${index}`, {
                 method: 'DELETE'
             });
             if (response.ok) {
-                setBooks((book: any) => book.filter((app: any) => app.id !== index));
+                setProduct((book: any) => book.filter((app: any) => app.id !== index));
                 console.log('Объект удален')
             } else {
                 console.error('Ошибка при удалении направления:', response.statusText);
@@ -95,30 +85,24 @@ const PageAdmin = () => {
         e.preventDefault();
         try {
             const formData = new FormData();
-            formData.append('id', newBooks.id);
-            formData.append('title', newBooks.title);
-            formData.append('author', newBooks.author);
-            formData.append('publication_year', newBooks.publication_year);
-            formData.append('bestseller', newBooks.bestseller.toString());
-            formData.append('isNew', newBooks.isNew.toString());
-            formData.append('price', newBooks.price);
-            formData.append('GenreId', newBooks.GenreId);
-            formData.append('discount', newBooks.discount.toString());
-            formData.append('cover_image', newBooks.cover_image);
-            formData.append('description', newBooks.description);
+            formData.append('title', newProduct.title);
+            formData.append('price', newProduct.price);
+            formData.append('image', newProduct.image.toString());
+            formData.append('CategoryId', newProduct.CategoryId);
+            formData.append('description', newProduct.description);
 
-            const response = await fetch('http://localhost:5000/api/book/', {
+            const response = await fetch('http://localhost:5000/api/equipment/', {
                 method: 'POST',
                 body: formData,
             });
 
             if (response.ok) {
-                const res = await fetch('http://localhost:5000/api/book/');
+                const res = await fetch('http://localhost:5000/api/equipment/');
                 if (!res.ok) {
                     throw new Error('Unable to fetch directions!');
                 }
                 const jsonData = await res.json();
-                setBooks(jsonData.rows);
+                setProduct(jsonData.rows);
 
                 console.log('добавлен объект');
             } else {
@@ -131,63 +115,24 @@ const PageAdmin = () => {
 
     return (
         <div className={styles.wrapperAdmin}>
-            <div className={styles.addBooks}>
+            <div className={styles.addProduct}>
                 <div>
-                    <h2 className={styles.nameAdmin}>Добавить новую книгу</h2>
+                    <h2 className={styles.nameAdmin}>Добавить новый товар</h2>
                     <form className={styles.formAdmin} onSubmit={handleSubmit}>
                 <div className={styles.inputForm}>
                     <label>Название:</label>
                     <input className={styles.input} placeholder='Название' type="text" name="title"
-                           value={newBooks.title} onChange={handleChange}/>
-                </div>
-                <div className={styles.inputForm}>
-                    <label>Автор:</label>
-                    <input className={styles.input} placeholder='Автор' type="text" name="author"
-                           value={newBooks.author} onChange={handleChange}/>
-                </div>
-                <div className={styles.inputForm}>
-                    <label>Год:</label>
-                    <input className={styles.input} placeholder='Год' type="number" name="publication_year"
-                           value={newBooks.publication_year} onChange={handleChange}/>
+                           value={newProduct.title} onChange={handleChange}/>
                 </div>
                 <div className={styles.inputForm}>
                     <label>Цена:</label>
                     <input className={styles.input} placeholder='Цена' type="number" name="price"
-                           value={newBooks.price} onChange={handleChange}/>
-                </div>
-                        <div className={styles.inputForm}>
-                            <label>Жанр:</label>
-                            <input className={styles.input} placeholder='Жанр' type="number" name="GenreId"
-                                   value={newBooks.GenreId} onChange={handleChange}/>
-                        </div>
-                        <div className={styles.checboxBlock}>
-                            <p className={styles.textInput}>
-                                Бестселлер
-                            </p>
-                            <input type='checkbox' name='bestseller' value={'true'}
-                                   onChange={handleChange}
-                                   className={styles.checkbox}/>
-                        </div>
-                        <div className={styles.checboxBlock}>
-                            <p className={styles.textInput}>
-                                Новая книга
-                            </p>
-                            <input type='checkbox' name='isNew' value={'true'}
-                                   onChange={handleChange}
-                                   className={styles.checkbox}/>
-                        </div>
-                        <div className={styles.checboxBlock}>
-                            <p className={styles.textInput}>
-                                Скидка
-                            </p>
-                            <input type='checkbox' name='discount' value={'true'}
-                                   onChange={handleChange}
-                                   className={styles.checkbox}/>
+                           value={newProduct.price} onChange={handleChange}/>
                 </div>
                 <div className={styles.inputForm}>
                     <label>Картинка:</label>
                     <div className={styles.blockImages}>
-                        <input className={styles.imagesInput} type="file" name="cover_image"
+                        <input className={styles.imagesInput} type="file" name="image"
                                accept='/image/*, .png, .jpg, .web'
                                onChange={handleChange}/>
                     </div>
@@ -196,29 +141,28 @@ const PageAdmin = () => {
                             <label>Информация:</label>
                             <textarea maxLength={400} className={styles.inputText} placeholder='Текст'
                                       name="description"
-                                      value={newBooks.description} onChange={handleChange}/>
+                                      value={newProduct.description} onChange={handleChange}/>
                         </div>
 
                 <button className={styles.summit} type="submit">Отправить</button>
             </form>
                 </div>
                 <div className={styles.genders}>
-                    <h2 className={styles.nameAdmin}>Таблица номеров жанров</h2>
+                    <h2 className={styles.nameAdmin}>Таблица номеров Категорий</h2>
                     {gender.map((elem: any) => (
                         <div key={elem.id} className={styles.textGendr}><span className={styles.idgendr}>{elem.id}</span>{elem.genre}</div>
                     ))}
                 </div>
             </div>
 
-            <h2 className={styles.nameBooksList}>Добавленные Книги</h2>
+            <h2 className={styles.nameList}>Добавленные товары</h2>
             <ul className={styles.blockList}>
-                {books.map((elem) => (
+                {product.map((elem) => (
                     <li key={elem.id} className={styles.infoList}>
                         <div>
-                            <img src={`http://localhost:5000/${elem.cover_image}`} alt='tower'
+                            <img src={`http://localhost:5000/${elem.image}`} alt='tower'
                                  className={styles.imgesBooks}/>
                             <div className={styles.textBooks}>
-                                <div className={styles.nameBook}>{elem.author}</div>
                                 <div className={styles.renovationBook}>{elem.title}</div>
                                 <div className={styles.prise}>{elem.price} сом</div>
                             </div>
