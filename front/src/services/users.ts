@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma';
 
 
-export function getUserById(id: string) {
-  return prisma.user.findUnique({ where: { id } });
+export function getUserById(id: number) {
+  return prisma.users.findUnique({ where: { id } });
 }
 
 export function getAllUser() {
-  return prisma.user.findMany();
+  return prisma.users.findMany();
 }

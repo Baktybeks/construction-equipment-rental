@@ -1,0 +1,89 @@
+@import "../../app/styles/mixin";
+
+.numbers {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+
+
+  @include laptop {
+    justify-content: space-between;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.textRed, .yearsRed {
+  color: #AE1919;
+}
+
+.textRed {
+  font-size: 48px;
+  line-height: 72px;
+  font-weight: 600;
+  margin-right: 6px;
+
+  @include tablet {
+    font-size: 34px;
+  }
+}
+
+.textNum {
+  width: 90px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.yearsInfo {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.nameYears {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 96px;
+  margin-bottom: 13px;
+
+  @include tablet {
+    font-size: 44px;
+    line-height: 54px;
+  }
+}
+
+.textOne {
+  margin-bottom: 16px;
+}
+
+.textOne, .textTwo {
+  max-width: 828px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #fff;
+}
+
+.blockImage {
+  width: 495px;
+  height: 651px;
+  background-image: url("./icons/workedMen.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include tablet {
+    display: none;
+  }
+}

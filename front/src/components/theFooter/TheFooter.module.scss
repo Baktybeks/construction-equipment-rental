@@ -1,0 +1,95 @@
+.footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  column-gap: 100px;
+  flex-shrink: 0;
+  background: #191A19;
+  padding: 65px 112px 50px;
+}
+
+.componentFooter {
+  width: 100%;
+}
+
+.footerImage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.inputEmail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 8px;
+  position: relative;
+}
+
+.imageArrow {
+  position: absolute;
+  right: 0;
+}
+
+.headerInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.inputText {
+  width: 271px;
+  height: 30px;
+  border: none;
+  padding-bottom: 2px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background: #191A19;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.footerBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nameFooter, .textInput, .nameLink {
+  color: #ffffff;
+}
+
+.footerInfo {
+  max-width: 600px;
+}
+
+.text {
+  max-width: 450px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.footerLink {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.nameLink {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}

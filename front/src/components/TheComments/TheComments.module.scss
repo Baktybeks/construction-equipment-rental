@@ -1,0 +1,50 @@
+@import "../../app/styles/mixin";
+
+.nameSlider {
+  font-size: 28px;
+  line-height: 42px;
+  font-weight: 600;
+  color: #AE1919;
+  align-items: center;
+}
+
+.textSlider {
+  max-width: 900px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+
+  @include laptop {
+    width: 370px;
+  }
+
+  @include tablet {
+    width: 370px;
+  }
+}
+
+.nameUser {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nameContru {
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.image {
+  border: 4px solid #AE1919;
+  border-radius: 50%;
+}
+
+.imagesMen {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}

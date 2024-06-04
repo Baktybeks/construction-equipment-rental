@@ -1,0 +1,51 @@
+@import "../../app/styles/mixin";
+
+.nameHeader {
+  width: 459px;
+  font-size: 64px;
+  line-height: 96px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 14px;
+
+  @include tablet {
+    font-size: 34px;
+    line-height: 54px;
+  }
+}
+
+.text {
+  color: #AE1919;
+}
+
+.textFuture {
+  width: 520px;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  margin-bottom: 75px;
+}
+
+.btnServices {
+  width: 246px;
+  height: 66px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 24px;
+  line-height: 36px;
+  background: #AE1919;
+  column-gap: 10px;
+
+  &:active {
+    box-shadow: inset 0px 2px 10px 2px rgba(128, 0, 0, 1);
+  }
+}
+
+.textLink {
+  color: #fff;
+  padding-bottom: 6px;
+}

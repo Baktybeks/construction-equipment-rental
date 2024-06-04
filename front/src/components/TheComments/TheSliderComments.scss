@@ -1,0 +1,68 @@
+@import "../../app/styles/mixin";
+
+.slider-comments {
+  .slick-arrow {
+    display: block !important;
+    position: absolute !important;
+    top: 65%;
+    color: #fff;
+    background: none;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .slick-prev {
+    left: 20%;
+    z-index: 4;
+
+    &:before {
+      content: '<';
+      padding-right: 4px;
+      font-weight: 600;
+    }
+  }
+
+  .slick-next {
+    right: 20%;
+
+    &:after {
+      content: '>';
+      padding-left: 6px;
+      font-weight: 600;
+    }
+  }
+
+  .slick-list {
+    max-width: 900px;
+    height: 462px;
+    margin: 0 auto;
+  }
+
+  .slick-track {
+    height: 468px;
+  }
+
+  .slick-slide {
+    width: 900px !important;
+    display: grid !important;
+    place-items: center;
+    height: 463px;
+    border-radius: 15px !important;
+    margin-right: 0px !important;
+    padding-bottom: 20px !important;
+    position: relative !important;
+    text-align: center;
+    overflow: hidden !important;
+
+    @include tablet {
+      width: 999px !important;
+    }
+
+    :focus-visible {
+      outline: none !important;
+    }
+  }
+}
+
