@@ -9,9 +9,9 @@ import styles from './TheHeader.module.scss'
 
 export const navItems = [
 	{ label: 'Home', href: '/' },
-	{ label: 'About US', href: '/about' },
-	{ label: 'Service', href: '/blog' },
-	{ label: 'Project', href: '/project' }
+	// { label: 'About US', href: '/about' },
+	// { label: 'Service', href: '/blog' },
+	// { label: 'Project', href: '/project' }
 ]
 
 

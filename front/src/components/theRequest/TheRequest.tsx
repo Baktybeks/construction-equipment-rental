@@ -1,7 +1,12 @@
+'use client'
+
 import React from 'react'
 import styles from './TheRequest.module.scss'
+import {useSession} from "next-auth/react";
 
 const TheRequest = () => {
+	const session = useSession()
+
 	return (
 		<>
 			<h2 className={styles.nameRequest}>Leading Way In Building & Civil Construction</h2>
@@ -16,14 +21,16 @@ const TheRequest = () => {
 						<input className={styles.inputForm} type='text' placeholder='Name' />
 						<input className={styles.inputForm} type='email' placeholder='Email' />
 						<input className={styles.inputForm} type='number' placeholder='Phone' />
-						<select className={styles.inputForm} id='service' name='service'>
-							<option className={styles.valueService} value='#'>Select Your Service</option>
-							<option className={styles.valueService} value='service1'>Service1</option>
-							<option className={styles.valueService} value='service2'>Service2</option>
-							<option className={styles.valueService} value='service3'>Service3</option>
-						</select>
+						{/*<select className={styles.inputForm} id='service' name='service'>*/}
+						{/*	<option className={styles.valueService} value='#'>Select Your Service</option>*/}
+						{/*	<option className={styles.valueService} value='service1'>Service1</option>*/}
+						{/*	<option className={styles.valueService} value='service2'>Service2</option>*/}
+						{/*	<option className={styles.valueService} value='service3'>Service3</option>*/}
+						{/*</select>*/}
 						<textarea className={styles.textareaForm} placeholder='Additional Details!' />
-						<button className={styles.submit} type='button'>Submit Request</button>
+
+						{session.data ? <button className={styles.submit} type='button'>Submit Request</button> :
+						<div className={styles.textForm}>You must register to submit an application.</div>}
 					</form>
 				</div>
 				<div className={styles.blockInfo}>
