@@ -18,8 +18,11 @@ const SighInForm = () => {
 			redirect: false
 		})
 
+		console.log(session.data?.user)
+
 		if (res) {
-			router.push('/')
+			session.data && (
+				session.data?.user?.name === 'admin' ? (router.push('/admin')) : (router.push('/')))
 		}
 
 	}

@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import Slider from 'react-slick'
 import Image from 'next/image'
 import { dateComment } from '@/components/TheComments/dateComment/DateComment'
+import Slider from "react-slick";
 import './TheSliderComments.scss'
 import styles from './TheComments.module.scss'
 

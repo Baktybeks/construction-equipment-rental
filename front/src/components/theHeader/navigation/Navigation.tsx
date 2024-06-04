@@ -19,13 +19,11 @@ type Props = {
 
 const Navigation = ({ navLinks }: Props) => {
 	const [isActive, setActive] = useState<boolean>()
-	const pathname = usePathname()
 	const session = useSession()
 
 	return (
 		<>
 			{navLinks.map((link) => {
-				// setActive(pathname === link.href)
 
 				return (
 					<Link key={link.label} href={link.href}
@@ -35,21 +33,18 @@ const Navigation = ({ navLinks }: Props) => {
 				)
 			})}
 			{
-				session?.data && (
-					<Link className={classNames(styles.textLink, { [styles.active]: isActive })}
-								href='/profile'>Profile</Link>
+				session.data && (
+					session.data?.user?.name === 'admin' ? (
+						<>
+							<Link className={styles.textLink}
+								  href='/admin'>Профиль</Link>
+							<Link className={styles.textLink}
+								  href='/applications'>Заявки</Link>
+						</>
+					) : <Link className={styles.textLink}
+							  href='/profile'>Профиль</Link>
 				)
 			}
-			{
-				session?.data ?
-					<Link className={classNames(styles.textLink, { [styles.active]: isActive })} href='#'
-								onClick={() => signOut({ callbackUrl: '/' })}>Sign Out</Link>
-					:
-					// <Link href='/api/auth/signin'>Sign In</Link>
-					<Link className={classNames(styles.textLink, { [styles.active]: isActive })} href='/signin'>Sign
-						In</Link>
-			}
-
 		</>
 	)
 }
