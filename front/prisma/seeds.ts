@@ -1,6 +1,5 @@
 import { PrismaClient, Role } from '@prisma/client';
-import bcrypt from 'bcrypt' ;
-
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -19,18 +18,23 @@ const initialUsers = [
   },
 ];
 
-// const seed = async() => {
-//   await prisma.$executeRaw`TRUNCATE TABLE users RESTART IDENTITY;`
-//   for (const user of initialUsers) {
-//     const { password, ...userData } = user;
-//     const hashedPassword = await bcrypt.hash(password, 5);
-//     await prisma.users.create({
-//       data: {
-//         ...userData,
-//         password: hashedPassword,
-//       },
-//     });
-//   }
-// };
+const seed = async () => {
+  await prisma.$executeRaw`TRUNCATE TABLE "Users" RESTART IDENTITY;`
+  for (const user of initialUsers) {
+    const { password, ...userData } = user;
+    const hashedPassword = await bcrypt.hash(password, 5);
+    await prisma.users.create({
+      data: {
+        ...userData,
+        password: hashedPassword,
+      },
+    });
+  }
+};
 
-// seed();
+seed().catch(e => {
+  console.error(e);
+  prisma.$disconnect();
+}).finally(() => {
+  prisma.$disconnect();
+});
