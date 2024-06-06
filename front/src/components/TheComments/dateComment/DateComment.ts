@@ -3,20 +3,20 @@ import OneMen from '../icons/1man.png'
 export const dateComment = [
 	{
 		avatar: OneMen,
-		name: 'Tom DeLonge',
-		county: 'CEO, Lexmark',
-		comment: 'I am very satisfied with the services. Their team is very professional and efficient in completing our project on time and at a very affordable cost. The quality of their work is very good and I highly recommend this company for any construction project.'
+		name: 'Akai',
+		county: 'Kyrgyzstan',
+		comment: 'Я очень доволен услугами. Их команда очень профессиональна и эффективна в выполнении нашего проекта вовремя и по очень доступной цене. Качество их работы очень хорошее, и я очень рекомендую эту компанию для любого строительного проекта.'
 	},
 	{
 		avatar: OneMen,
-		name: 'Tom DeLonge',
-		county: 'CEO, Lexmark',
-		comment: 'I am very satisfied with the services. Their team is very professional and efficient in completing our project on time and at a very affordable cost. The quality of their work is very good and I highly recommend this company for any construction project.'
+		name: 'Kutman',
+		county: 'Kyrgyzstan',
+		comment: 'Я чрезвычайно доволен предоставленными услугами. Команда отличается высокой профессиональностью и эффективностью, завершив наш проект в срок и по очень разумной цене. Качество их работы впечатляет, и я настоятельно рекомендую эту компанию для любых строительных проектов.'
 	},
 	{
 		avatar: OneMen,
-		name: 'Tom DeLonge',
-		county: 'CEO, Lexmark',
-		comment: 'I am very satisfied with the services. Their team is very professional and efficient in completing our project on time and at a very affordable cost. The quality of their work is very good and I highly recommend this company for any construction project.'
+		name: 'Ilham',
+		county: 'Kyrgyzstan',
+		comment: 'Я остался очень доволен услугами этой компании. Их команда профессиональна и работает эффективно, завершая наш проект вовремя и по доступной стоимости. Качество выполненных работ на высшем уровне, поэтому я настоятельно рекомендую эту компанию для любых строительных нужд..'
 	}
 ]

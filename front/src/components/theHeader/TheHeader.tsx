@@ -6,6 +6,7 @@ import Logo from '../icons/Logo'
 import {signOut, useSession} from "next-auth/react";
 
 import styles from './TheHeader.module.scss'
+import React from 'react';
 
 export const navItems = [
 	{ label: 'Home', href: '/' },
@@ -37,7 +38,7 @@ const TheHeader = () => {
 						</>
 				}
 			</div>
-			<Link href='#' className={styles.btnUs}>
+			<Link href="tel:+996706774686" className={styles.btnUs}>
 				Contact Us
 			</Link>
 		</header>
