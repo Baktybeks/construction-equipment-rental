@@ -30,8 +30,8 @@ const Application = sequelize.define('Application', {
     email: { type: DataTypes.STRING, allowNull: false },
     phone: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
-    EquipmentId: { type: DataTypes.INTEGER, allowNull: false },
     processed: { type: DataTypes.BOOLEAN, defaultValue: false },
+    EquipmentId: { type: DataTypes.INTEGER, allowNull: false },
 });
 
 Category.hasMany(Equipment, { as: 'Category', foreignKey: 'CategoryId' });

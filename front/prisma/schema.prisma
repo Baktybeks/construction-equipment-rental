@@ -24,19 +24,30 @@ model Applications {
   phone             String
   description       String
   processed         Boolean         @default(false)
+  equipment         Equipment       @relation(fields: [EquipmentId], references: [id])
   EquipmentId       Int
-  service           Services        @relation(fields: [ServiceId], references: [id])
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
 }
 
-model Services {
+model Equipment {
   id                Int             @id @default(autoincrement())
   title             String
   image             String          @unique
-  amountDays        Int
   description       String
+  price             Int
   application       Applications[]
+  category          Categories       @relation(fields: [CategoryId], references: [id])
+  CategoryId        Int
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model Categories {
+  id                Int             @id @default(autoincrement())
+  category          String
+  image             String          @unique
+  equipment         Equipment[]
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
 }

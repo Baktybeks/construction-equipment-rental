@@ -28,7 +28,6 @@ class ApplicationController {
               model: Category,
               as: 'Category',
               attributes: [  'category', 'image'  ],
-
             }
           ]
         }

@@ -1,4 +1,4 @@
-const { Equipment } = require('../models/models');
+const { Equipment, Category } = require('../models/models');
 const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path');
@@ -21,7 +21,15 @@ class EquipmentController {
   }
 
   async getAll(req, res) {
-    const data = await Equipment.findAndCountAll();
+    const data = await Equipment.findAndCountAll({
+      include: [
+        {
+          model: Category,
+          as: 'Category',
+          attributes: [  'category', 'image'  ],
+        }
+      ]
+    });
     return res.json(data);
   }
 
