@@ -1,4 +1,4 @@
-const {Application } = require('../models/models')
+const {Application, Equipment, Category } = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 
@@ -17,6 +17,21 @@ class ApplicationController {
       order: [
         ['processed', 'ASC'],
         ['createdAt', 'DESC']
+      ],
+      include: [
+        {
+          model: Equipment,
+          as: 'Equipment',
+          attributes: [  'title', 'description', 'price', 'CategoryId' ],
+          include: [
+            {
+              model: Category,
+              as: 'Category',
+              attributes: [  'category', 'image'  ],
+
+            }
+          ]
+        }
       ]
     });
     return res.json(data)
