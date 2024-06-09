@@ -37,7 +37,7 @@ model Equipment {
   description       String
   price             Int
   application       Applications[]
-  category          Categories       @relation(fields: [CategoryId], references: [id])
+  category          Categories      @relation(fields: [CategoryId], references: [id])
   CategoryId        Int
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt

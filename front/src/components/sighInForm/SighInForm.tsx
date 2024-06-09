@@ -1,31 +1,41 @@
 'use client'
 import {useRouter} from 'next/navigation'
 import {signIn, useSession} from 'next-auth/react'
-import {FormEventHandler} from 'react'
+import {FormEventHandler, useEffect} from 'react'
 import styles from './SighInForm.module.scss'
 
 const SighInForm = () => {
 	const router = useRouter();
-	const session = useSession();
+	const {data: session, status} = useSession();
+
+	useEffect(() => {
+		if (status === 'authenticated') {
+			if (session?.user?.name === 'admin') {
+				router.push('/admin');
+			} else {
+				router.push('/');
+			}
+		}
+	}, [session, status, router]);
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-		event.preventDefault()
-		const formData = new FormData(event.currentTarget)
+		event.preventDefault();
+		const formData = new FormData(event.currentTarget);
 
 		const res = await signIn('credentials', {
 			email: formData.get('email'),
 			password: formData.get('password'),
 			redirect: false
-		})
+		});
 
-		console.log(session)
-
-		if (res) {
-			session.data && (
-				session.data?.user?.name === 'admin' ? (router.push('/admin')) : (router.push('/')))
+		if (res && !res.error) {
+		} else if (res?.error) {
+			console.error('Ошибка авторизации:', res.error);
+		} else {
+			console.error('Неизвестная ошибка авторизации');
 		}
-
 	}
+
 	return (
 		<form onSubmit={handleSubmit} className={styles.loginForm}>
 			<div className={styles.inputForm}>
@@ -44,13 +54,11 @@ const SighInForm = () => {
 				<input
 					type='checkbox' name='checkbox' id='checkbox' required
 				/>
-				<label className={styles.textCheckbox} htmlFor='password'>Запомнить меня</label>
+				<label className={styles.textCheckbox} htmlFor='checkbox'>Запомнить меня</label>
 			</div>
-			<div></div>
 			<button className={styles.btn} type='submit'>Войти</button>
 		</form>
-
 	)
 }
 
-export default SighInForm
+export default SighInForm;

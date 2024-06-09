@@ -52,7 +52,7 @@ const TheRequest = () => {
             });
 
             if (response.ok) {
-                if (!res.ok) {
+                if (!response.ok) {
                     throw new Error('Unable to fetch directions!');
                 }
 
@@ -67,61 +67,59 @@ const TheRequest = () => {
 
     return (
         <>
-            <h2 className={styles.nameRequest}>Leading Way In Building & Civil Construction</h2>
+            <h2 className={styles.nameRequest}>Строительство - всегда будет актуальным</h2>
             <div className={styles.blockInfoForm}>
                 <div className={styles.blockForm}>
-                    <h3 className={styles.nameForm}>Request A Quote</h3>
+                    <h3 className={styles.nameForm}>Ваши запросы</h3>
                     <p className={styles.textForm}>
-                        Complete control over products allow us to our customers the best quality
-                        prices and services. We take great pride in everything that we do in Jhontraktor
+                        Полный контроль над продукцией позволяет нам предлагать нашим клиентам лучшее качество цен и услуг. Мы очень гордимся всем, что делаем
                     </p>
                     <form className={styles.form}>
                         <input className={styles.inputForm} value={newAplication.name} onChange={handleChange}
-                               name="name" type="text" placeholder="Name"
+                               name="name" type="text" placeholder="Ваше имя"
                         />
                         <input className={styles.inputForm} value={newAplication.email} onChange={handleChange}
                                name="email" type="email" placeholder="Email"
                         />
                         <input className={styles.inputForm} value={newAplication.phone} onChange={handleChange}
-                               name="phone" type="number" placeholder="Phone"
+                               name="phone" type="number" placeholder="номер для связи"
                         />
                         <select className={styles.inputForm} id="service" onChange={handleChange}
                                 value={newAplication.description} name="description"
                         >
-                            <option className={styles.valueService} value="Банки"></option>
-                            <option className={styles.valueService} value="Мбанк">Мбанк</option>
-                            <option className={styles.valueService} value="Элкарт">Элкарт</option>
+                            <option className={styles.valueService} value="Элсом">Элсом</option>
                             <option className={styles.valueService} value="Viza">Viza</option>
                         </select>
                         <textarea className={styles.textareaForm} onChange={handleChange}
-                                  placeholder="Additional Details!"
+                                  placeholder="дополнительно (коммент)!"
                         />
 
-                        {session.data ? <button className={styles.submit} type="button">Submit Request</button> :
-                            <div className={styles.textForm}>You must register to submit an application.</div>}
+                        {session.data ? <button className={styles.submit} type="button">отправить запрос</button> :
+                            <div className={styles.textForm}>Для подачи заявки необходимо авторизоваться</div>}
                     </form>
                 </div>
                 <div className={styles.blockInfo}>
-                    <h3 className={styles.nameInfo}>Contact Info</h3>
+                    <h3 className={styles.nameInfo}>Информация о нас</h3>
                     <ul className={styles.listContact}>
                         <li>
-                            <h4 className={styles.nameList}>Our Location</h4>
-                            <p className={styles.infoText}> ankara street 1/2 Bishkek 720064</p>
+                            <h4 className={styles.nameList}>Наш адрес: </h4>
+                            <p className={styles.infoText}> ул. Анкара 1/2, Бишкек 720064</p>
                         </li>
                         <li>
-                            <h4 className={styles.nameList}>Quick Contact</h4>
-                            <p className={styles.infoText}>Email : emir.2001.centr@gmail.com</p>
-                            <p className={styles.infoText}>Call Us : (+996)706-774-686</p>
+                            <h4 className={styles.nameList}>Наши контакты: </h4>
+                            <p className={styles.infoText}>Email: emir.2001.centr@gmail.com</p>
+                            <p className={styles.infoText}>Телефон: (+996)706-774-686</p>
                         </li>
                         <li>
-                            <h4 className={styles.nameList}>Opening Hours</h4>
-                            <p className={styles.infoText}>Monday - Friday</p>
-                            <p className={styles.infoText}>09:00 AM - 06:00 PM</p>
+                            <h4 className={styles.nameList}>Мы открыты:</h4>
+                            <p className={styles.infoText}>Будние дни: 09:00-19:00</p>
+                            <p className={styles.infoText}>В Выходные дни: 10:00-16:00</p>
                         </li>
                     </ul>
-                    <p className={styles.textContact}>Do You Have Any Question, Just Contact Us To Get Help!</p>
+                    <p className={styles.textContact}>У Вас есть вопросы? можете с нами связаться!
+                        Позвонить(и кнопка должна перебрасывать   на звонок или показывал  номер)</p>
                     <a href="tel:+996706774686"> <button className={styles.btnContacts}>
-                        Contact Us
+                        Связаться с нами
                     </button>
                     </a>
                 </div>

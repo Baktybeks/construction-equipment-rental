@@ -15,9 +15,9 @@ const Home = () => {
 			</section>
 			<section className={styles.wrapperYears}>
 				<ul className={styles.listInfo}>
-					<li className={styles.textList}><CircleIcon />Quality Control System, 100% Satisfaction Guarantee</li>
-					<li className={styles.textList}><CircleIcon />Highly Proffesional Staff, Accurate Testing Processes</li>
-					<li className={styles.textList}><CircleIcon />Unrivalled Workmanship, Proffesional and Qualified</li>
+					<li className={styles.textList}><CircleIcon />Система контроля качества, 100% гарантия удовлетворения</li>
+					<li className={styles.textList}><CircleIcon />Высокопрофессиональный персонал, точные процессы тестирования</li>
+					<li className={styles.textList}><CircleIcon />Непревзойденное качество техники</li>
 				</ul>
 				<TheYears />
 			</section>
