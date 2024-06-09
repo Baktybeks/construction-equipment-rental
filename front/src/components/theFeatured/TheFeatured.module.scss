@@ -74,15 +74,18 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #AE1919;
+  border-radius: 10px;
 }
 
 .imgesTower {
-  width: 100%;
+  width: 300px;
   height: 461px;
-  border-radius: 15px
+  border-radius: 15px;
+  object-fit: cover;
 }
 
 .nameTower {
@@ -113,5 +116,5 @@
   line-height: 30px;
   font-weight: 600;
   color: #191A19;
-  margin: 32px 0px 106px;
+  margin: 32px 0 106px;
 }

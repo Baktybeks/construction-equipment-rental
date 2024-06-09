@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/admin/Admin.module.scss'
 import TheRequest from '@/components/theRequest/TheRequest';
-import Aplication from '@/components/aplication/Aplication';
 
-const Aplications = () => {
+const Aplication = () => {
     const [ categories, setCategories ] = useState([]);
 
     useEffect(() => {
@@ -47,9 +46,9 @@ const Aplications = () => {
 
     return (
         <div className={ styles.wrapperAdmin }>
-            <Aplication/>
+            <TheRequest/>
         </div>
     );
 };
 
-export default Aplications;
+export default Aplication;
