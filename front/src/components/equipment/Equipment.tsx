@@ -74,7 +74,6 @@ const Equipment: React.FC<EquipmentProps> = ({ categories }) => {
             });
             if (response.ok) {
                 setEquipment(prevEquipment => prevEquipment.filter(eq => eq.id !== index));
-                console.log('Объект удален');
             } else {
                 console.error('Ошибка при удалении оборудования:', response.statusText);
             }
@@ -105,7 +104,6 @@ const Equipment: React.FC<EquipmentProps> = ({ categories }) => {
                 }
                 const jsonData = await res.json();
                 setEquipment(jsonData.rows);
-                console.log('добавлен объект');
                 setNewEquipment(initialStateEquipment);
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';

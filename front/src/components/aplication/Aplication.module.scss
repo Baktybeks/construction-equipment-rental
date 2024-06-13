@@ -68,11 +68,14 @@
     line-height: 38px;
     letter-spacing: 0.5px;
     color: #fff;
-    padding: 0 5px;
+    padding:15px;
+    border: 1px white solid;
+    border-radius: 10px;
 }
 .btns {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 .btn {
     padding: 5px;
@@ -85,6 +88,7 @@
 
 .info {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 20px;
 }

@@ -31,6 +31,7 @@ const Application = sequelize.define('Application', {
     phone: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
     processed: { type: DataTypes.BOOLEAN, defaultValue: false },
+    approved: { type: DataTypes.BOOLEAN, defaultValue: false },
     EquipmentId: { type: DataTypes.INTEGER, allowNull: false },
 });
 

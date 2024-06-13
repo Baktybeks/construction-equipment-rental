@@ -4,6 +4,7 @@ import styles from './TheRequest.module.scss';
 import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Equipment from '@/components/equipment/Equipment';
+import InputMask from 'react-input-mask';
 
 
 interface Category {
@@ -26,7 +27,6 @@ const TheRequest = () => {
     const [ equipment, setEquipment ] = useState<Equipment[]>([]);
 
     const [ newAplication, setNewAplication ] = useState<Category>(initialAplication);
-    console.log(newAplication,'newAplicationnewAplicationnewAplicationnewAplicationnewAplication')
 
     useEffect(() => {
         const fetchEquipment = async() => {
@@ -71,7 +71,6 @@ const TheRequest = () => {
                 if (!response.ok) {
                     throw new Error('Unable to fetch directions!');
                 }
-                console.log('добавлен объект');
                 setNewAplication(initialAplication)
             } else {
                 console.error('Ошибка при добавлении:', response.statusText);
@@ -98,8 +97,14 @@ const TheRequest = () => {
                         <input className={ styles.inputForm } value={ newAplication.email } onChange={ handleChange }
                                name="email" type="email" placeholder="Email"
                         />
-                        <input className={ styles.inputForm } value={ newAplication.phone } onChange={ handleChange }
-                               name="phone" type="number" placeholder="номер для связи"
+                        <InputMask
+                            mask="999-999-99-99-99"
+                            className={styles.inputForm}
+                            value={newAplication.phone}
+                            onChange={handleChange}
+                            name="phone"
+                            type="text" // Изменено с type="number" на type="text"
+                            placeholder="996-000-00-00-00"
                         />
                         <select
                             className={styles.select}

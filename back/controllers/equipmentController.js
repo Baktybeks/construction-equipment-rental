@@ -26,7 +26,7 @@ class EquipmentController {
         {
           model: Category,
           as: 'Category',
-          attributes: [  'category', 'image'  ],
+          attributes: [  'category', 'image' , 'id' ],
         }
       ]
     });
