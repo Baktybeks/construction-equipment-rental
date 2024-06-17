@@ -68,7 +68,7 @@ const PageAdmin = () => {
         <div className={styles.category_list}>
             <h2 className={styles.nameAdmin}>Категории</h2>
             <div className={styles.filter}>
-                <label htmlFor="categoryFilter" className={styles.filterLabel}>Фильтр по категории:</label>
+                <label htmlFor="categoryFilter" className={styles.filterLabel} style={{color: 'white'}}>Фильтр по категории:</label>
                 <select
                     id="categoryFilter"
                     className={styles.filterSelect}

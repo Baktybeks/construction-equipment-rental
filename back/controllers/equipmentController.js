@@ -22,6 +22,9 @@ class EquipmentController {
 
   async getAll(req, res) {
     const data = await Equipment.findAndCountAll({
+      order: [
+        ['title', 'ASC']
+      ],
       include: [
         {
           model: Category,

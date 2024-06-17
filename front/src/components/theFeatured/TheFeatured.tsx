@@ -49,7 +49,7 @@ const TheFeatured = () => {
                     </Slider>
                 </div>
                 <div className={ styles.allProgect }>
-                    <Link href={ '/category' } className={ styles.textLink }>Все категории <ArrowCircleRight/></Link>
+                    <Link href={ '/category' } className={ styles.textLink } style={{color: 'white'}}>Все категории<ArrowCircleRight/></Link>
                 </div>
             </div>
         </div>

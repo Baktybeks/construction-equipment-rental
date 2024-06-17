@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Aplication.module.scss';
+import { log } from 'util';
 
 interface Application {
     id: string;
@@ -11,7 +12,7 @@ interface Application {
     EquipmentId: Number;
     createdAt: string;
     updatedAt: string;
-    Equipment: { title: string };
+    Equipments: [];
 }
 
 const Aplication: React.FC = () => {
@@ -108,7 +109,6 @@ const Aplication: React.FC = () => {
             return 'Invalid date';
         }
     };
-
     return (
         <div className={styles.category}>
             <div className={styles.category_list}>
@@ -119,7 +119,16 @@ const Aplication: React.FC = () => {
                             <div className={styles.info}>
                                 <p>Имя: {elem.name}</p>
                                 <p>Телефон: {elem.phone}</p>
-                                <p>Название: {elem.Equipment.title}</p>
+                                {
+                                    !!elem.Equipments.length && <div style={{border: "1px solid white", borderRadius: 10, padding: 5}}> Оборудования:
+                                        {
+                                            elem.Equipments.map(item =>
+                                                // @ts-ignore
+                                                <p>{ item.title }</p>
+                                            )
+                                        }
+                                    </div>
+                                }
                                 <p>Дата добавления: {formatDate(elem.createdAt)}</p>
                             </div>
                             <div className={styles.btns}>

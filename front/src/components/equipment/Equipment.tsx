@@ -105,10 +105,12 @@ const Equipment: React.FC<EquipmentProps> = ({ categories }) => {
                 const jsonData = await res.json();
                 setEquipment(jsonData.rows);
                 setNewEquipment(initialStateEquipment);
+                alert('оборудование дабавлено')
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
             } else {
+                alert('Ошибка при добавлении нового оборудования')
                 console.error('Ошибка при добавлении нового оборудования:', response.statusText);
             }
         } catch (error) {
@@ -161,8 +163,9 @@ const Equipment: React.FC<EquipmentProps> = ({ categories }) => {
                             name="CategoryId"
                             value={newEquipment.CategoryId}
                             onChange={handleChange}
+                            defaultValue=''
                         >
-                            <option value="" disabled>Выберите категорию</option>
+                            <option value="" >Выберите категорию</option>
                             {categories.map(category => (
                                 <option key={category.id} value={category.id}>{category.category}</option>
                             ))}
