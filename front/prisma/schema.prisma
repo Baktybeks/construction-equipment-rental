@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id                Int             @id @default(autoincrement())
+  name              String?
+  email             String          @unique
+  password          String
+  role              Role            @default(USER)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model Applications {
+  id                Int             @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String
+  description       String
+  processed         Boolean         @default(false)
+  approved          Boolean         @default(false)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  Equipments        ApplicationEquipment[]
+}
+
+model Equipment {
+  id                Int             @id @default(autoincrement())
+  title             String
+  image             String          @unique
+  description       String
+  price             Int
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  CategoryId        Int
+  category          Categories      @relation(fields: [CategoryId], references: [id])
+  applications      ApplicationEquipment[]
+}
+
+model Categories {
+  id                Int             @id @default(autoincrement())
+  category          String
+  image             String          @unique
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  equipment         Equipment[]
+}
+
+model ApplicationEquipment {
+  id                Int             @id @default(autoincrement())
+  ApplicationId     Int
+  EquipmentId       Int
+
+  application       Applications    @relation(fields: [ApplicationId], references: [id])
+  equipment         Equipment       @relation(fields: [EquipmentId], references: [id])
+
+  @@unique([ApplicationId, EquipmentId])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
